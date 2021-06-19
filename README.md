@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).# rvchan-web
+# rvchan-web
+
+my first normal react+node.js project
