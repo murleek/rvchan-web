@@ -1,0 +1,28 @@
+@import "style/color";
+
+.cardWrap {
+  box-shadow: 0 0 2.5rem 0.025rem rgb(0 0 0 / 8%);
+  width: 100%;
+  overflow: hidden;
+  border-radius: .625rem;
+  margin: 0 0 20px;
+
+  & > .card {
+    background: $cardColor;
+    font-size: .9rem;
+    padding: 12px;
+    border: 0;
+
+    & > .cardTitle {
+      width: 100%;
+      text-align: center;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+      padding-bottom: 6px;
+    }
+  }
+  &:last-child {
+    margin: 0;
+  }
+}

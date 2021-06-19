@@ -1,0 +1,47 @@
+.tab {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  & > button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: .15s cubic-bezier(0,.3,.5,1);
+    font-size: 15px;
+    height: 32px;
+    flex: 1;
+    z-index: 2;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0.3125rem;
+    -webkit-tap-highlight-color: #0000;
+
+    &.active {
+      font-weight: bold;
+    }
+
+    &:focus {
+      background: transparent;
+    }
+  }
+}
+.activeTab {
+  width: calc(50% - 2px);
+  height: 32px;
+  background: #fff;
+
+  
+  transition: .2s cubic-bezier(.25,0,.25,1);
+  position: relative;
+  margin-bottom: -32px;
+  overflow: hidden;
+  border-radius: 0.3125rem;
+  z-index: 1;
+  box-shadow: 0 0 0.5rem 0.1rem rgb(0 0 0 / 8%);
+
+  &.last {
+    margin-left: calc(50% + 2px)!important;
+  }
+}

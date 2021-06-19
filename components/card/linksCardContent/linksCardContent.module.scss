@@ -1,0 +1,17 @@
+.linksWrap {
+  & > ul {
+    width: 100%;
+    display: block;
+    columns: 2;
+    column-gap: 3em;
+
+    & > .boardSubject {
+      margin: 0 2px 2px;
+      font-weight: bold;
+
+      &:not(:first-child) {
+        margin-top: .8em;
+      }
+    }
+  }
+}

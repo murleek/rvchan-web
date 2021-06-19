@@ -1,0 +1,23 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  margin-top: 4px;
+
+  .left {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+
+    small {
+      color: #aaa;
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+}

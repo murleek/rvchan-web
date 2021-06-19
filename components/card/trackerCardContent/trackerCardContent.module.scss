@@ -1,0 +1,14 @@
+.trackerWrap {
+  > ul > li {
+    & .board {
+      color: #000000;
+    }
+    & .title {
+      color: #ffaaff;
+    }
+    & .date {
+      font-size: .8em;
+      color: gray;
+    }
+  }
+}

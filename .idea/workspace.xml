@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7d35310f-919e-443b-8391-c72c7c994308" name="Default Changelist" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/rvchan.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animHeight/animHeight.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/card/boardsCardContent/boardsCardContent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/card/boardsCardContent/boardsCardContent.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/card/card.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/card/card.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/card/linksCardContent/linksCardContent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/card/linksCardContent/linksCardContent.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/card/statsCardContent/statsCardContent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/card/statsCardContent/statsCardContent.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/card/trackerCardContent/trackerCardContent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/card/trackerCardContent/trackerCardContent.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/footer/footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/footer/footer.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/header/header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/header/header.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/sessionball/sessionball.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/tabbedCard/tabbedCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/tabbedCard/tabbedCard.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/_error.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon-16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Black.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Black.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Black.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Bold.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Bold.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Heavy.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Heavy.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Heavy.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Light.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Light.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Light.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Medium.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Medium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Medium.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Semibold.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Semibold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Semibold.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Thin.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Thin.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Thin.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Ultralight.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Ultralight.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/SFUIDisplay-Ultralight.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/SFUIDisplay/font-face.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/rvchan.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style/_color.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/string.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SCSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="r4v3c4t" />
+        <option value="rave.cart" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectId" id="1tzFUdM7LU8EiYrFhNb6jpg3R4R" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.5.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/style" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Aleksandra\PhpstormProjects\rvchan\public\fonts\SFUIDisplay" />
+      <recent name="C:\Users\Aleksandra\PhpstormProjects\rvchan\components\header" />
+      <recent name="C:\Users\Aleksandra\PhpstormProjects\rvchan\components\footer" />
+      <recent name="C:\Users\Aleksandra\PhpstormProjects\rvchan\components\sessionball" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Aleksandra\PhpstormProjects\rvchan\style" />
+      <recent name="C:\Users\Aleksandra\PhpstormProjects\rvchan\components" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.Debug Application" />
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.dev" />
+      <item itemvalue="npm.start" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7d35310f-919e-443b-8391-c72c7c994308" name="Default Changelist" comment="" />
+      <created>1623764027958</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623764027958</updated>
+      <workItem from="1623764030211" duration="1571000" />
+      <workItem from="1623765853088" duration="10606000" />
+      <workItem from="1623842114462" duration="24476000" />
+      <workItem from="1624000815250" duration="18903000" />
+      <workItem from="1624096978985" duration="460000" />
+      <workItem from="1624097451248" duration="9000" />
+      <workItem from="1624097530158" duration="447000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="275" y="22" key="#JavaScript" timestamp="1623766954060">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#JavaScript/0.0.1366.728@0.0.1366.728" timestamp="1623766954060" />
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1623767795136">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1623767795136" />
+    <state x="454" y="167" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1623931725785">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="454" y="167" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1623931725785" />
+    <state x="363" y="100" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1623765580220">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="363" y="100" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.728@0.0.1366.728" timestamp="1623765580220" />
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1624098024557">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1624098024557" />
+    <state x="129" y="55" key="DiffContextDialog" timestamp="1624097720938">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="129" y="55" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1624097720938" />
+    <state width="1323" height="177" key="GridCell.Tab.0.bottom" timestamp="1624026793308">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="177" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1624026793308" />
+    <state width="1323" height="177" key="GridCell.Tab.0.center" timestamp="1624026793308">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="177" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1624026793308" />
+    <state width="1323" height="177" key="GridCell.Tab.0.left" timestamp="1624026793306">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="177" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1624026793306" />
+    <state width="1323" height="177" key="GridCell.Tab.0.right" timestamp="1624026793308">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="177" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1624026793308" />
+    <state x="184" y="6" key="SettingsEditor" timestamp="1623766082178">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1623766082178" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1624097598042">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1624097598042" />
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1624027162851">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1624027162851" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1624023945306">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1624023945306" />
+  </component>
+</project>
