@@ -1,4 +1,5 @@
 import stc from "string-to-color";
+import style from "./sessionBall.module.scss";
 
 export default function SessionBall(props) {
     const borderSize = props.borderSize || 1;
@@ -21,7 +22,7 @@ export default function SessionBall(props) {
                 alignItems: "center",
                 background: reverse ? color : outercolor,
                 padding: borderSize
-            }} className="sessionBall">
+            }} className={style.sessionBall}>
             <div style={
                 {
                     ...props.style,

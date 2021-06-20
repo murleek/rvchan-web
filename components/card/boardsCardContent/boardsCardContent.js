@@ -3,9 +3,8 @@ import style from "./boardsCardContent.module.scss"
 const imgs = [
     "https://srbu.ru/images/stroitelnye-materialy/vidy-dosok-iz-dereva/vidy-dosok-iz-dereva.jpg",
     "https://upload.wikimedia.org/wikipedia/ru/0/00/%D0%9E%D0%B1%D1%80%D0%B5%D0%B7%D0%BD%D0%B0%D1%8F_%D0%B4%D0%BE%D1%81%D0%BA%D0%B0.jpg",
-    "https://lh3.googleusercontent.com/proxy/4nDiMc4AOY9x1mZ4kWxfYZtSsLfvKnjDQe_CF0oCT022qb3ExSWGQxikfgY5-Nxt8reydZwszAcpuyELSb97klRcWqSxEFWDAxF8mIWVa3iTFifPvLdwatwRYzs",
     "https://alfastroy.kharkov.ua/images/items/pilomaterialy-300x366-8c8.jpg"
-]
+];
 
 export default function BoardsCardContent() {
     return (

@@ -23,7 +23,7 @@ export default class AnimHeight extends Component {
 
     setFixedHeight = () => {
         this.setState({
-            height: document.querySelector(".Auto").clientHeight
+            height: document.querySelector(".auto").clientHeight
         });
     };
 
@@ -35,7 +35,7 @@ export default class AnimHeight extends Component {
                 height={height}
                 duration={this.props.duration || 500}
                 onAnimationEnd={this.setFixedHeight}
-                className="Auto"
+                className="auto"
             >
                 {children}
             </AnimateHeight>

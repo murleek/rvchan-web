@@ -1,11 +1,17 @@
 import style from "./header.module.scss"
+import classNames from 'classnames';
 
 function Header(props) {
     return (
         <div className={style.header}>
-            <span className={style.title}>
-                <img src="/rvchan.svg" alt="rvchan" height={10} />
-                {props.header || "rvchan"}
+            <span className={classNames({
+                [style.title]: true,
+                [style.withLogo]: !props.header
+            })}>
+                {props.title || "rvchan"}
+            </span>
+            <span className={style.description}>
+                {props.description || "выскажи что-угодно анонимно"}
             </span>
         </div>
     )

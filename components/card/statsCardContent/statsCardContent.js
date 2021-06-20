@@ -3,15 +3,15 @@ import style from "./statsCardContent.module.scss"
 import {declOfNum} from "/utils/string";
 
 export default function StatsCardContent() {
-    const boardsCount = 0;
-    const postPerWeek = 0;
-    const postCount = 0;
-    const uniqCount = 0;
+    const boardsCount = 404;
+    const postPerWeek = 404;
+    const postCount = 404;
+    const uniqCount = 404;
     const lastPost = {
-        board: undefined,
-        thread: 0,
-        post: 0,
-        date: new Date(0)
+        board: "ERR",
+        thread: 404,
+        post: 404,
+        date: new Date(14640000)
     };
     return (
         <div className={style.statsWrap}>

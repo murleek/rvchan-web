@@ -1,5 +1,11 @@
 .trackerWrap {
   > ul > li {
+    > .typeThread {
+      color: #d80;
+    }
+    > .typePost {
+      color: #08d;
+    }
     & .board {
       color: #000000;
     }

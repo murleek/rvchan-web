@@ -10,7 +10,7 @@ export default function TabbedCard({ items }) {
 
     return (
         <>
-            <Card style={{padding: 4+'px', background:"#ddd"}}>
+            <Card style={{padding: 4+'px', background:"#0001"}}>
                 <div className={style.activeTab + (active === 1 ? ` ${style.last}` : '')}/>
                 <div className={style.tab}>
                     {items.map((n, i) => (
@@ -18,7 +18,9 @@ export default function TabbedCard({ items }) {
                             className={i === active ? style.active : ''}
                             onClick={openTab}
                             data-index={i}
-                        >{n.name}</button>
+                        >
+                            {n.name}
+                        </button>
                     ))}
                 </div>
             </Card>

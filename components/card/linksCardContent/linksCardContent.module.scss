@@ -1,9 +1,8 @@
 .linksWrap {
-  & > ul {
-    width: 100%;
-    display: block;
-    columns: 2;
-    column-gap: 3em;
+  display: flex;
+  column-gap: 1em;
+  & > div {
+    flex: 1;
 
     & > .boardSubject {
       margin: 0 2px 2px;

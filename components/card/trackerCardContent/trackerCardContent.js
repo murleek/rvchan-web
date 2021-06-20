@@ -1,4 +1,5 @@
 import Link from "next/link";
+import classNames from 'classnames';
 import style from "./trackerCardContent.module.scss"
 
 export default function TrackerCardContent() {
@@ -22,7 +23,7 @@ export default function TrackerCardContent() {
                 files: [],
                 caption: "ДА!!!"
             },
-            date: new Date(15)
+            date: new Date(15000)
         }
     ];
 
@@ -30,8 +31,17 @@ export default function TrackerCardContent() {
         <div className={style.trackerWrap}>
             <ul>
                 {
-                    posts.map((p) => (
+                    posts.reverse().slice(0,50).map((p) => (
                         <li>
+                            <code className={classNames({
+                                [style.typeThread]: !p.thread,
+                                [style.typePost]: !!p.thread
+                            })}>
+                                {'['}
+                                {!p.thread ? "Т" : "П"}
+                                {']'}
+                            </code>
+                            {' '}
                             <span className={style.board}>
                                 /{p.board}/
                             </span>
