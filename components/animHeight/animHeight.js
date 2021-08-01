@@ -1,44 +1,34 @@
-import React, { Component } from "react";
-import AnimateHeight from "react-animate-height";
+import { useState, useEffect } from "react";
+import { useSpring, animated } from "react-spring";
+import { useMeasure } from "react-use";
 
-export default class AnimHeight extends Component {
-    state = {
-        contentToggle: false,
-        height: "auto"
-    };
+export default function AnimHeight(props) {
+    const [contentHeight, setContentHeight] = useState(0);
+    const [ref, { height }] = useMeasure();
+    const expand = useSpring({
+        config: {
+            mass: 1.1,
+            tension: 220
+        },
+        height: `${contentHeight}px`
+    });
 
-    componentDidMount() {
-        this.setFixedHeight();
-    }
+    useEffect(() => {
+        //Sets initial height
+        setContentHeight(height);
+      
+        //Adds resize event listener
+        window.addEventListener("resize", setContentHeight(height));
+      
+        // Clean-up
+        return window.removeEventListener("resize", setContentHeight(height));
+    }, [height]);
 
-    componentDidUpdate(prevProps, prevState, prevHeight) {
-        const { children } = this.props;
-
-        if (prevProps.children !== children) {
-            this.setState({
-                height: "auto"
-            });
-        }
-    }
-
-    setFixedHeight = () => {
-        this.setState({
-            height: document.querySelector(".auto").clientHeight
-        });
-    };
-
-    render() {
-        const { height } = this.state;
-        const { children } = this.props;
-        return (
-            <AnimateHeight
-                height={height}
-                duration={this.props.duration || 500}
-                onAnimationEnd={this.setFixedHeight}
-                className="auto"
-            >
-                {children}
-            </AnimateHeight>
-        );
-    }
+    return (
+        <animated.div style={expand}>
+            <div ref={ref}>
+                {props.children}
+            </div>
+        </animated.div>
+    );
 }

@@ -5,21 +5,21 @@ export default function LinksCardContent() {
     return (
         <div className={style.linksWrap}>
             <div>
-                <li className={style.boardSubject}>
+                <span className={style.boardSubject}>
                     доски
-                </li>
-                <li><Link href="/b/">/b/ред</Link></li>
-                <li><Link href="/a/">/a/ниме</Link></li>
+                </span>
+                <span><Link href="/b/">/b/ред</Link></span>
+                <span><Link href="/a/">/a/ниме</Link></span>
             </div>
             <div>
-                <li className={style.boardSubject}>
+                <span className={style.boardSubject}>
                     разное:
-                </li>
-                <li><Link href="/rules/">правила</Link></li>
-                <li><Link href="/docs/">документація</Link></li>
-                <li><Link href="/feedback/">жалобы и пожелания</Link></li>
-                <li><Link href="//t.me/ravechan">канал в телеграме</Link></li>
-                <li><Link href="mailto:r4v3c4t@pm.me">почта</Link></li>
+                </span>
+                <span><Link href="/rules/">правила</Link></span>
+                <span><Link href="/docs/">документація</Link></span>
+                <span><Link href="/feedback/">жалобы и пожелания</Link></span>
+                <span><a href="//t.me/ravechan">канал в телеграме</a></span>
+                <span><Link href="mailto:r4v3c4t@pm.me">почта</Link></span>
             </div>
         </div>
     )

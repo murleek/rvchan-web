@@ -1,20 +1,24 @@
 .trackerWrap {
-  > ul > li {
-    > .typeThread {
-      color: #d80;
-    }
-    > .typePost {
-      color: #08d;
-    }
-    & .board {
-      color: #000000;
-    }
-    & .title {
-      color: #ffaaff;
-    }
-    & .date {
-      font-size: .8em;
-      color: gray;
+  & > ul {
+    display: block;
+
+    & > li {
+      & > .typeThread {
+        color: #aa3300;
+      }
+      & > .typePost {
+        color: #0077bb;
+      }
+      & .board {
+        color: #000000;
+      }
+      & .title {
+        color: #ffaaff;
+      }
+      & .date {
+        font-size: .8em;
+        color: #666666;
+      }
     }
   }
 }

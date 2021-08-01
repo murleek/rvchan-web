@@ -32,7 +32,7 @@ export default function TrackerCardContent() {
             <ul>
                 {
                     posts.reverse().slice(0,50).map((p) => (
-                        <li>
+                        <li key={p.id}>
                             <code className={classNames({
                                 [style.typeThread]: !p.thread,
                                 [style.typePost]: !!p.thread
@@ -42,11 +42,11 @@ export default function TrackerCardContent() {
                                 {']'}
                             </code>
                             {' '}
-                            <span className={style.board}>
-                                /{p.board}/
-                            </span>
+                            <Link href={`/${p.board}/${p.id}`} className={style.board}>
+                                {`»${p.board}${p.thread != null && p.thread != 0 ? `»${p.thread}${p.id != null ? `›${p.id}` : ''}` : `»${p.id}`}`}
+                            </Link>
                             {' - '}
-                            <Link href={`/${p.board}/${p.id}`}>{p.title || p.content.caption}</Link>
+                            <span>{p.title || p.content.caption}</span>
                             {' '}
                             <span className={style.date}>
                                 {'['}

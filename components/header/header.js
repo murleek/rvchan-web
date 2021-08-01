@@ -6,7 +6,7 @@ function Header(props) {
         <div className={style.header}>
             <span className={classNames({
                 [style.title]: true,
-                [style.withLogo]: !props.header
+                [style.withLogo]: !props.title
             })}>
                 {props.title || "rvchan"}
             </span>

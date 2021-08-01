@@ -6,7 +6,10 @@ function Footer(props) {
         <div className={style.footer}>
             <div className={style.left}><small>rave.cat projects. 2021</small></div>
             <div className={style.right}>
-                <SessionBall session={props.session} privToken={props.privToken} width={16} height={16} borderSize={6} borderRadius={25}/>
+                {props.session != null && props.privToken != null 
+                    ? <SessionBall session={props.session} privToken={props.privToken} width={16} height={16} borderSize={6} borderRadius={25}/>
+                : <></>
+                }
             </div>
         </div>
     )

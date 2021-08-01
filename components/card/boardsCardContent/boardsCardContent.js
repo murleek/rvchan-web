@@ -1,20 +1,99 @@
 import style from "./boardsCardContent.module.scss"
-
-const imgs = [
-    "https://srbu.ru/images/stroitelnye-materialy/vidy-dosok-iz-dereva/vidy-dosok-iz-dereva.jpg",
-    "https://upload.wikimedia.org/wikipedia/ru/0/00/%D0%9E%D0%B1%D1%80%D0%B5%D0%B7%D0%BD%D0%B0%D1%8F_%D0%B4%D0%BE%D1%81%D0%BA%D0%B0.jpg",
-    "https://alfastroy.kharkov.ua/images/items/pilomaterialy-300x366-8c8.jpg"
-];
+import { useState, useRef, useEffect } from "react";
 
 export default function BoardsCardContent() {
+    const boards = [
+        {
+            title: "b",
+            name: "/b/ред",
+            speed: 50,
+            uip: 50,
+            desc: "доска, где правил нету",
+            tags: [
+                "бред"
+            ],
+            posts: 50
+        },
+        {
+            title: "a",
+            name: "/a/ниме",
+            speed: 50,
+            uip: 50,
+            desc: "если ты не анимешник, то не заходи сюда",
+            tags: [
+                "аниме",
+                "2d",
+                "вайфу"
+            ],
+            posts: 50
+        },
+        {
+            title: "dev",
+            name: "/dev/елоперы",
+            speed: 50,
+            uip: 50,
+            desc: "разработчики тут",
+            tags: [
+                "разработка",
+                "компьютер"
+            ],
+            posts: 50
+        }
+    ]
+
+    const [left, setLeft] = useState(0);
+    const scrollRef = useRef();
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (el) {
+            if (left < 0) setLeft(0);
+            else if (left > el.scrollWidth - el.clientWidth) setLeft(el.scrollWidth - el.clientWidth);
+            const onWheel = e => {
+                if (e.deltaY == 0 || e.deltaX != 0) return;
+                if (!(el.scrollLeft === 0 && e.deltaY < 0) 
+                    && !(el.scrollWidth - el.clientWidth - Math.round(el.scrollLeft) === 0 
+                    && e.deltaY > 0)) {
+                    e.preventDefault();
+                }
+                el.scrollTo({
+                    left: left + e.deltaY,
+                    behavior: "smooth"
+                });
+                setLeft(left + e.deltaY);
+            };
+            el.addEventListener("wheel", onWheel);
+            return () => el.removeEventListener("wheel", onWheel);
+        }
+    }, [left]);
+
     return (
-        <div>
-            <h2 align="center">ДОСКИ ТРЕД ОБЪЯВЛЯЮ ОТКРЫТЫМ!!!!!</h2>
-            <div className={style.doskaSDoskami}>
-            {imgs.map((i) =>
-                <img className={style.doska} alt="доска" src={i}/>
-            )}
-            </div>
+        <div ref={scrollRef} className={style.tableWrap}>
+            <table className={style.table}>
+                <thead className={style.thead}>
+                    <tr>
+                        <th className={style.boardTitle}>Доска</th>
+                        <th className={style.boardName}>Название</th>
+                        <th className={style.boardSpeed}>П/н</th>
+                        <th className={style.boardUIP}>Уник IP</th>
+                        <th className={style.boardDesc}>Описание</th>
+                        <th className={style.boardTags}>Теги</th>
+                        <th className={style.boardPosts}>Постов</th>
+                    </tr>
+                </thead>
+                <tbody className={style.tbody}>
+                    { boards.map((n, i) => {
+                        return (<tr key={i} className={style.tr}>
+                            <td className={style.boardTitle}>/{n.title}/</td>
+                            <td className={style.boardName}>{n.name}</td>
+                            <td className={style.boardSpeed}>{n.speed}</td>
+                            <td className={style.boardUIP}>{n.uip}</td>
+                            <td className={style.boardDesc}>{n.desc}</td>
+                            <td className={style.boardTags}>{n.tags.join(", ")}</td>
+                            <td className={style.boardPosts}>{n.posts}</td>
+                        </tr>)
+                    })}
+                </tbody>
+            </table>
         </div>
     )
 }
