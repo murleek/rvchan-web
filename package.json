@@ -25,6 +25,7 @@
     "build": "next build",
     "start": "next start"
   },
+  "heroku-prebuilt": "yarn install",
   "dependencies": {
     "@use-gesture/react": "^10.0.0-beta.22",
     "@use-gesture/vanilla": "^10.0.0-beta.22",
