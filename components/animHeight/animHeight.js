@@ -14,18 +14,13 @@ export default function AnimHeight(props) {
     });
 
     useEffect(() => {
-        //Sets initial height
         setContentHeight(height);
-      
-        //Adds resize event listener
         window.addEventListener("resize", setContentHeight(height));
-      
-        // Clean-up
         return window.removeEventListener("resize", setContentHeight(height));
     }, [height]);
 
     return (
-        <animated.div style={expand}>
+        <animated.div style={{...expand, overflow: "hidden"}}>
             <div ref={ref}>
                 {props.children}
             </div>

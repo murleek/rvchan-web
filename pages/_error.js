@@ -26,7 +26,7 @@ function Error({ statusCode, description }) {
                 <FastLinks />
                 {statusCode
                     ? <Header title={statusCode} description={
-                        description !== null && obj !== void 0
+                        description !== null && description !== void 0
                             ? description
                             : "серверная ошибка"
                         } />

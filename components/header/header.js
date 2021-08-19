@@ -1,18 +1,19 @@
 import style from "./header.module.scss"
 import classNames from 'classnames';
+import AnimText from "../animText/animText";
 
 function Header(props) {
     return (
         <div className={style.header}>
-            <span className={classNames({
+            <AnimText className={classNames({
                 [style.title]: true,
                 [style.withLogo]: !props.title
             })}>
                 {props.title || "rvchan"}
-            </span>
-            <span className={style.description}>
+            </AnimText>
+            <AnimText className={style.description}>
                 {props.description || "выскажи что-угодно анонимно"}
-            </span>
+            </AnimText>
         </div>
     )
 }

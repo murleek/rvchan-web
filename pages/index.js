@@ -27,6 +27,7 @@ const items = [
         content: ( <BoardsCardContent /> )
     }
 ];
+const name = "rvchan";
 
 export default function Home({ session, privToken, referrer }) {
     const cookies = new Cookies();

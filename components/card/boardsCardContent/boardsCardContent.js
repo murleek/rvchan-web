@@ -59,7 +59,7 @@ export default function BoardsCardContent() {
                     left: left + e.deltaY,
                     behavior: "smooth"
                 });
-                setLeft(left + e.deltaY);ч
+                setLeft(left + e.deltaY);
             };
             el.addEventListener("wheel", onWheel);
             return () => el.removeEventListener("wheel", onWheel);
