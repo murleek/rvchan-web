@@ -1,0 +1,18 @@
+.fastLinksWrap {
+    display: block;
+    margin-top: -26px;
+    top: -26px;
+    padding: 4px 0;
+    position: relative;
+    & > span {
+        &:not(:last-child) {
+            margin-right: 4px;
+        }
+        
+        &.end, &.start {
+            & a:not(:last-child) {
+                margin-right: 4px;
+            }
+        }
+    }
+}

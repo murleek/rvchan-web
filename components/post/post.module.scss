@@ -1,0 +1,49 @@
+.postWrap {
+    margin: 0 0 6px;
+    & .post:not(.postOp) {
+        margin-left: 16px;
+        position: relative;
+        &::before {
+            display: block;
+            content: "»";
+            position: absolute;
+            font-size: 1.2em;
+            left: -17px;
+            top: -2px;
+            color: #ccc;
+        }
+    }
+    & .postContent {
+        word-break: break-word;
+        white-space: pre-wrap;
+        line-height: 1.25;
+        margin: 8px 16px;
+        display: block;
+        & > .quote {
+            color: #2d862d;
+        }
+    }
+    & .postInfo {
+        color: #666;
+        margin-bottom: 2px;
+        font-size: .9em;
+        display: block;
+
+        & > .postNum {
+            color: #c1c;
+        }
+        & > .postName {
+            font-weight: 600;
+        }
+        & > *:not(:last-child) {
+            margin-right: 4px;
+        }
+        @supports (display: flex) and (column-gap: 4px) {
+            display: flex;
+            column-gap: 4px;
+            & > * {
+                margin: 0!important;
+            }
+        }
+    }
+}

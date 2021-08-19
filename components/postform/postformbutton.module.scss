@@ -1,0 +1,75 @@
+.button {
+    background: transparent;
+    border: solid 1px #0000;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 30px;
+    margin: 2px;
+    padding: 0;
+    padding-top: 3px;
+    width: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: ease-in-out .2s border, ease-in-out .2s padding;
+    white-space: nowrap;
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    & .text {
+        height: 18px;
+        line-height: 18px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        vertical-align: center;
+    }
+    & .icon {
+        transition: padding .2s ease-in-out;
+        padding: 0;
+    }
+    &.withText {
+        padding: 0 2px;
+        & .icon {
+            float: left;
+            padding: 0 1px;
+        }
+    }
+
+    &::before {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-color: #0000;
+        transition: ease-in-out .2s background;
+        content: ' ';
+        top: 0px;
+        left: 0px;
+    }
+    &:hover {
+        border: solid 1px #0002;
+
+        &::before {
+            background-color: #0001;
+        }
+    }
+    &:focus {
+        outline: none;
+        box-shadow: none;
+        border: solid 1px #0002;
+
+        &::before {
+            background-color: #0000;
+        }
+    }
+    &:active {
+        border: solid 1px #0002;
+
+        &::before {
+            background-color: #0000;
+        }
+    }
+}
