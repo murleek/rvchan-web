@@ -1,0 +1,31 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  width: calc(100% - 16px);
+  max-width: 480px;
+  height: 28px;
+  border-radius: .625em;
+  margin-bottom: 4px;
+  margin-left: 16px;
+
+  transition: 0.2s ease-in-out;
+
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  text-decoration-color: #db00db;
+  text-decoration: underline;
+
+  &:hover {
+    background-color: #ddd!important;
+    color: #000!important;
+    text-decoration-color: #0000!important;
+  }
+  &.disabled {
+    background: #fff;
+    color: #000;
+  }
+}

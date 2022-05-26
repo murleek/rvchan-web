@@ -1,0 +1,29 @@
+@import "/style/respond";
+
+.splittedWrap {
+    & > :not(:last-child) {
+        margin-bottom: 20px;
+    }
+    @supports (display: flex) {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-around;
+        column-gap: 20px;
+        row-gap: 20px;
+        & > * {
+            width: 100%;
+            flex: 1;
+        }
+        & > :not(:last-child) {
+            margin-bottom: 0;
+        }
+        
+        @include respond(mobile-large desktop) {
+            flex-flow: row nowrap;
+            & > * {
+                flex: 1;
+                width: calc(50% - 8px)
+            }
+        }
+    }
+}

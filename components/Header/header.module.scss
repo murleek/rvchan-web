@@ -1,0 +1,24 @@
+.header {
+  height: 156px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+  & .title {
+    font-weight: bold;
+    font-size: 3em;
+    &.withLogo {
+      background: url(/rvchan.svg) left/auto 60% no-repeat;
+      padding-left: 1.25em;
+      &.red {
+        background-image: url(/rvchan-red.svg);
+      }
+    }
+  }
+  & .description {
+    font-size: 1.2em;
+    color: #666666;
+  }
+}

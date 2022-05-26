@@ -1,0 +1,121 @@
+.tableWrap {
+  overflow-x: auto;
+  & .table {
+    width: 100%;
+    border-spacing: 0 2px;
+
+    & > .thead {
+      background-color: #faf;
+      
+      & th {
+        border-radius: .3125em;
+        padding: 4px 15px 5px 5px;
+        background: #faf;
+        color: #000;
+        text-align: left;
+        white-space: nowrap;
+        &:first-child {
+          border-radius: .3125em 0 0 .3125em;
+          border-right: 0!important;
+        }
+        &:not(:first-child):not(:last-child) {
+          border-radius: 0;
+          border-left: 0;
+          border-right: 0;
+        }
+        &:last-child {
+          border-radius: 0 .3125em .3125em 0;
+          border-left: 0!important;
+        }
+
+        &.boardTitle {
+          
+        }
+        &.boardName {
+          
+        }
+        &.boardSpeed {
+          
+        }
+        &.boardUIP {
+          
+        }
+        &.boardDesc {
+          min-width: 169px;
+        }
+        &.boardTags {
+          min-width: 128px;
+        }
+        &.boardPosts {
+          
+        }
+      }
+    }
+
+    & > .tbody {
+      font-size: .9em;
+
+      & > .tr {
+        border-radius: .3125em;
+        transition: .2s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          background: #0001;
+          & > td {
+            border-color: #0002;
+          }
+        }
+
+        &:nth-of-type( even ) {
+          background-color: #ddd;
+        }
+
+        & > td {
+          margin: 0;
+          padding: 4px 4px 4px 4px;
+          text-align: center;
+          vertical-align: middle;
+          border: solid 1px #0000;
+          transition: .2s ease-in-out;
+
+          &:first-child {
+            border-radius: .3125em 0 0 .3125em;
+            border-right: 0!important;
+          }
+          &:not(:first-child):not(:last-child) {
+            border-radius: 0;
+            border-left: 0;
+            border-right: 0;
+          }
+          &:last-child {
+            border-radius: 0 .3125em .3125em 0;
+            border-left: 0!important;
+          }
+
+          &.boardTitle {
+            white-space: nowrap;
+            position: relative;
+          }
+          &.boardName {
+            white-space: nowrap;
+          }
+          &.boardSpeed {
+            white-space: nowrap;
+          }
+          &.boardUIP {
+            white-space: nowrap;
+          }
+          &.boardDesc {
+
+          }
+          &.boardTags {
+            
+          }
+          &.boardPosts {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
