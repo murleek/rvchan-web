@@ -48,13 +48,13 @@
 // 	function reply(match, p1, p2, p3, offset, string) {
 // 		if (id <= p1) return "&gt;&gt;" + p1;
 // 		else if (srakaba.posts.find(obj => { return obj.id == p1 })) {
-// 			if (id != NaN && srakaba.thread != 0) $('#messages .post#' + p1 + ' #post-replies').append('<a class="post-content-reply" href="javascript:toPost(' + id + ')">»' + id + '</a> ');
-// 			return '<a class="post-content-reply" href="javascript:toPost(' + p1 + ')">»' + p1 + (srakaba.thread == p1 ? " (OP)" : "" ) + '</a>';
+// 			if (id != NaN && srakaba.thread != 0) $('#messages .Post#' + p1 + ' #Post-replies').append('<a class="Post-content-reply" href="javascript:toPost(' + id + ')">»' + id + '</a> ');
+// 			return '<a class="Post-content-reply" href="javascript:toPost(' + p1 + ')">»' + p1 + (srakaba.thread == p1 ? " (OP)" : "" ) + '</a>';
 // 		} else {
 // 			var url = apiLink + "/thread-is-exist/index.php";
 // 			try {
 // 				var jqxhr = $.ajax({url: url, data: { b: srakaba.board, t: p1 }, async: false});
-// 				if (jqxhr.status == 200) return '<a class="post-content-reply" href="?board=' + srakaba.board + '&thread=' + p1 + '">»' + p1 + " →" + '</a>';
+// 				if (jqxhr.status == 200) return '<a class="Post-content-reply" href="?board=' + srakaba.board + '&thread=' + p1 + '">»' + p1 + " →" + '</a>';
 // 			} catch {}
 // 		}
 // 		return "&gt;&gt;" + p1;

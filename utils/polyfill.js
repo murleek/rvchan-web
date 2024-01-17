@@ -1,4 +1,4 @@
-const GlobalThisPolyfill = () => {
+const globalThisPolyfill = () => {
     if (typeof globalThis === 'object') return;
     Object.defineProperty(Object.prototype, '__magic__', {
         get: function() { return this; },
@@ -8,10 +8,10 @@ const GlobalThisPolyfill = () => {
     delete Object.prototype.__magic__;
 };
 
-const Nullish = (obj, or) => {
+const nullish = (obj, or) => {
     return obj !== null && obj !== void 0
         ? obj
         : or;
 }
 
-module.exports = { GlobalThisPolyfill, Nullish };
+module.exports = { globalThisPolyfill, nullish };

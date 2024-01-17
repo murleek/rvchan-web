@@ -3,34 +3,47 @@ import Moderators from "../../../../../models/moderators"
 import Activity from "../../../../../models/activity"
 import connectDB from '../../../../../lib/connectDB'
 import Boards from "../../../../../models/boards";
+import testRecaptcha from "../../../../../utils/recaptcha";
+import Threads from "../../../../../models/threads";
+import formidable from "formidable";
+import FTPClient from "ftp";
+
+export const config = {
+    api: {
+        bodyParser: false
+    }
+};
 
 export default connectDB(async (req, res) => {
     const {
-        query: { id, thread },
+        query: { boardId, thread },
         method,
         body,
     } = req;
     switch (method) {
         case "GET":
             try {
-                let board = await Boards.findOne({title: id});
+                let board = await Boards.findOne({title: boardId});
                 if (!board) {
                     try {
-                        board = await Boards.findOne({_id: id});
+                        board = await Boards.findOne({_id: boardId});
                     } catch (e) {
 
                     }
                 }
-                if (!board) res.status(404).json({success: false, error: "not found"});
+                if (!board) return res.status(404).json({success: false, error: "not found"});
 
-                let threadPost = await Posts(board.title).findOne({id: thread});
-                if (!threadPost) res.status(404).json({success: false, error: "not found"});
+                let threadPost = await Posts(board.title).findOne({id: thread}).lean();
+                if (!threadPost) return res.status(404).json({success: false, error: "not found"});
 
-                let posts = await Posts(board.title).find({thread: thread});
+                let threadOp = await Threads(board.title).findOne({id: thread}).lean();
 
-                res.json({
+                let posts = await Posts(board.title).find({thread: thread}).lean();
+                let postCount = await Posts(board.title).find({thread: thread}).count();
+
+                return res.json({
                     success: true,
-                    thread: [threadPost, ...posts]
+                    thread: {...threadOp, posts, postCount, post: threadPost}
                 })
             } catch (error) {
                 res.status(500).json({ success: false, error: error.name + ': ' + error.message })
@@ -39,10 +52,10 @@ export default connectDB(async (req, res) => {
 
         case "PUT":
             try {
-                let board = await Boards.findOne({title: id}).lean();
+                let board = await Boards.findOne({title: boardId}).lean();
                 if (!board) {
                     try {
-                        board = await Boards.findOne({_id: id}).lean();
+                        board = await Boards.findOne({_id: boardId}).lean();
                     } catch (e) {
 
                     }
@@ -72,10 +85,10 @@ export default connectDB(async (req, res) => {
                 if (!moderator.rules['*'] && !moderator.rules.canDeleteBoards) {
                     return res.status(403).json({success: false, error: "permission denied"})
                 }
-                let oldBoard = await Boards.findOne({title: id}).lean();
+                let oldBoard = await Boards.findOne({title: boardId}).lean();
                 if (!oldBoard) {
                     try {
-                        oldBoard = await Boards.findOne({_id: id}).lean();
+                        oldBoard = await Boards.findOne({_id: boardId}).lean();
                     } catch (e) {
 
                     }
@@ -94,6 +107,82 @@ export default connectDB(async (req, res) => {
                 res.json({
                     success: true,
                     deletedBoard: oldBoard
+                })
+            } catch (error) {
+                res.status(500).json({ success: false, error: error.name + ': ' + error.message })
+            }
+            break
+        case 'POST':
+            try {
+                const form = new formidable.IncomingForm({
+                    multiples: true,
+                    maxFileSize: 16*1024*1024,
+                    filter: ({mimetype}) => 
+                        mimetype && mimetype.includes("image")
+                });
+                form.parse(req, async function (err, fields, files) {
+                    console.log(err);
+                    console.log(fields);
+                    console.log(files);
+                    return res.status(500).json({ success: true, fields, files: files.f });
+
+                    try {
+                        await testRecaptcha(fields["g-recaptcha-token"]);
+                    } catch (error) {
+                        return res.status(500).json({ success: false, error: "captcha error: " + error.message });
+                    }
+
+                    let board = await Boards.findOne({ title: boardId });
+                    if (!board) {
+                        try {
+                            board = await Boards.findOne({ _id: boardId });
+                        } catch (e) {
+                        }
+                    }
+                    let threadPost = await Posts(board.title).findOne({ id: thread });
+                    if (!threadPost)
+                        res.status(404).json({ success: false, error: "not found" });
+
+                    let posts = await Posts(board.title).find({ thread: thread }).lean();
+
+                    if (files) {
+                        var config = {
+                            host: process.env.FTP_HOST,
+                            port: process.env.FTP_PORT,
+                            user: process.env.FTP_USER,
+                            password: process.env.FTP_PASSWORD
+                        }, client = new FTPClient();
+
+                        client.on('ready', function () {
+                            c.put('foo.txt', 'foo.remote-copy.txt', function (err) {
+                                if (err)
+                                    throw err;
+                                c.end();
+                            });
+                            files.forEach((e) => {
+                            });
+                        });
+                        c.connect(config);
+
+                        client.connect(function () {
+                            client.upload(['test/**'], '/static/images', {
+                                overwrite: 'all'
+                            }, function (result) {
+                                console.log(result);
+                            });
+
+                        });
+                    }
+
+                    let newPost = await Posts(board.title).create({
+                        thread: thread,
+                        content: fields.c,
+                        date: Date.now(),
+                        mail: fields.m,
+                        num: (posts[posts.length - 1]?.num ?? 1) + 1
+                    });
+
+                    res.status(201).json({ success: true, post: newPost });
                 })
             } catch (error) {
                 res.status(500).json({ success: false, error: error.name + ': ' + error.message })

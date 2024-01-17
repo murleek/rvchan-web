@@ -1,0 +1,26 @@
+.devToolsButton {
+    position: fixed;
+    left: 4px;
+    bottom: 4px;
+    background-color: hsl(240, 65%, 75%);
+    color: #fff;
+    height: 24px;
+    padding: 3px 8px;
+    border-radius: .625rem;
+    font-weight: 600;
+    z-index: 100;
+    
+    &.disabled {
+        display: none;
+        z-index: -50;
+        visibility: hidden;
+    }
+}
+.menu {
+    padding: 4px;
+}
+.toastSection {
+    display: flex;
+    column-gap: 4px;
+    align-items: center;
+}

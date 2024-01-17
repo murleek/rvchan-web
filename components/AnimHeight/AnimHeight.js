@@ -10,18 +10,22 @@ export default function AnimHeight(props) {
             mass: 1.1,
             tension: 220
         },
-        height: `${contentHeight}px`
+        height: props.zeroHeight ? '0px' : `${contentHeight}px`
     });
 
     useEffect(() => {
+        if (props.height) {
+            setContentHeight(props.height);
+            return;
+        }
         setContentHeight(height);
         window.addEventListener("resize", setContentHeight(height));
         return window.removeEventListener("resize", setContentHeight(height));
-    }, [height]);
+    }, [height, props.height]);
 
     return (
-        <animated.div style={{...expand, overflow: "hidden"}}>
-            <div ref={ref}>
+        <animated.div style={{...expand, overflow: props.noOverflow || "hidden"}}>
+            <div ref={ref} style={props.wrapStyle}>
                 {props.children}
             </div>
         </animated.div>

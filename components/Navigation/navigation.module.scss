@@ -1,0 +1,89 @@
+@import "/style/respond";
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 12px;
+  row-gap: 12px;
+  flex-direction: column;
+  .selectedBar {
+    width: 4px;
+    background: #faf;
+    border-radius: 2px;
+    position: relative;
+    margin-right: -6px;
+    z-index: 1;
+    height: 24px;
+  }
+  & aside {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    & ul {
+      flex: 1;
+    }
+    & li {
+      width: 100%;
+      flex: 1;
+      margin: 0 0 4px;
+      & > button {
+        line-height: 1.125;
+        text-align: left;
+        padding: 6px 4px 6px 16px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        width: calc(100% - 22px);
+        margin: 0;
+        box-sizing: content-box;
+        min-height: 22px;
+        border: solid 1px #0000;
+        background-color: #0000;
+        transition: border ease-in-out .2s, font-weight ease-in-out .2s, background ease-in-out .2s, padding ease-in-out .2s;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        user-select: none;
+        font-weight: 400;
+
+        &:hover {
+          background-color: #00000008;
+        }
+        &:focus {
+          outline: none;
+          box-shadow: none;
+          background-color: #00000008;
+          border: solid 1px #00000008;
+        }
+        &:active {
+          border: solid 1px #00000008;
+        }
+        &.active {
+          background-color: #00000008;
+          font-weight: 600;
+
+          &:hover {
+            background-color: #0001;
+          }
+          &:active {
+            border: solid 1px #00000008;
+          }
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  & main {
+    flex: 1;
+  }
+  @include respond(mobile-large desktop) {
+    flex-direction: row;
+
+    & aside {
+      max-width: 200px;
+    }
+  }
+
+}

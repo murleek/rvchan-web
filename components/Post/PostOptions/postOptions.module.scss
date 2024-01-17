@@ -1,0 +1,11 @@
+.postOptions {
+  color: #666;
+  padding: 0 8px;
+  font-size: .8em;
+  font-weight: 700;
+  text-align: right;
+
+  & > * {
+    margin-right: 8px;
+  }
+}

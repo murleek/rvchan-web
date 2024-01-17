@@ -1,46 +1,46 @@
 @mixin respond($media_names_args) {
-    /*stylelint-disable*/
-    $media_names: (
+  /*stylelint-disable*/
+  $media_names: (
     'mobile-small',
     'mobile-medium',
     'mobile-large',
     'desktop-small',
     'desktop-medium',
     'desktop-large'
-);
+  );
 
-    /*
-            .98px - is needed for Macbook which incorrectly calculate width if Zoom has been used.
-            This solution has been taken from Bootstrap: http://getbootstrap.com/docs/4.0/layout/overview/
-    */
-    $media_values: (
+  /*
+      .98px - is needed for Macbook which incorrectly calculate width if Zoom has been used.
+      This solution has been taken from Bootstrap: http://getbootstrap.com/docs/4.0/layout/overview/
+  */
+  $media_values: (
     'only screen and (max-width:420.98px)',
     'only screen and (min-width:421px) and (max-width:740.98px)',
     'only screen and (min-width:741px) and (max-width:1023.98px)',
     'only screen and (min-width:1024px) and (max-width:1280.98px)',
     'only screen and (min-width:1281px) and (max-width:1600.98px)', /* most common laptop and macbook screen width  */
     'only screen and (min-width:1601px)'
-);
-    /*stylelint-enable*/
-    $media_result: '';
+  );
+  /*stylelint-enable*/
+  $media_result: '';
 
-    @if ($media_names_args) {
-            @each $arg in $media_names_args {
-                    @if ($arg == mobile or $arg == desktop) {
-                            $media_result: $media_result+nth($media_values, index($media_names, $arg+'-small'))+', '+nth($media_values, index($media_names, $arg+'-medium'))+', '+nth($media_values, index($media_names, $arg+'-large'));
-                    }
+  @if ($media_names_args) {
+    @each $arg in $media_names_args {
+      @if ($arg == mobile or $arg == desktop) {
+        $media_result: $media_result+nth($media_values, index($media_names, $arg+'-small'))+', '+nth($media_values, index($media_names, $arg+'-medium'))+', '+nth($media_values, index($media_names, $arg+'-large'));
+      }
 
-                    @else {
-                            $media_result: $media_result+nth($media_values, index($media_names, $arg));
-                    }
+      @else {
+        $media_result: $media_result+nth($media_values, index($media_names, $arg));
+      }
 
-                    @if (length($media_names_args)>1 and length($media_names_args) > index($media_names_args,$arg)) {
-                            $media_result: $media_result+', ';
-                    }
-            }
-
-            @media #{$media_result} {
-                    @content;
-            }
+      @if (length($media_names_args)>1 and length($media_names_args) > index($media_names_args,$arg)) {
+        $media_result: $media_result+', ';
+      }
     }
+
+    @media #{$media_result} {
+      @content;
+    }
+  }
 }

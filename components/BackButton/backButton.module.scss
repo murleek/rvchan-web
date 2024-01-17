@@ -1,0 +1,51 @@
+.backButton {
+  width: 100%;
+}
+.updateButton {
+  width: 48px;
+}
+.stickyPanel {
+  position: sticky;
+  top: 2px;
+  z-index: 10;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  column-gap: 4px; 
+
+  & > div {
+    user-select: none;
+
+    background: #fff;
+    border: solid 1px #0000;
+    cursor: pointer;
+    height: 32px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .625em;
+    transition: .1s ease-in-out;
+    box-shadow: 0 0 2.5rem 0.025rem rgb(0 0 0 / 8%);
+    position: relative;
+    overflow: hidden;
+    transition: ease .2s;
+
+    & > span {
+      position: absolute;
+    }
+    @media (hover: hover) {
+      &:hover {
+        box-shadow: 0 0 3rem 0.0625rem rgb(0 0 0 / 12%), 0 0 1rem 0.025rem rgb(0 0 0 / 12%);
+        background-color: #efefef;
+        color: #000;
+        fill: #000;
+      }
+    }
+    &:focus {
+      box-shadow: 0 0 2.5rem 0.025rem rgb(0 0 0 / 8%);
+      background: #fff;
+      color: #000
+    }
+  }
+}

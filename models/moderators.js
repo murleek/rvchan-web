@@ -14,7 +14,10 @@ const moderators = new mongoose.Schema({
     required: true
   },
   createdBy: String,
-  creationDate: Date,
+  creationDate: {
+	  type: Date,
+	  default: Date.now
+  },
   rules: {
     "*": Boolean,
     canAddBoards: Boolean,
@@ -25,6 +28,6 @@ const moderators = new mongoose.Schema({
 
 mongoose.models = {};
 
-const Moderators = mongoose.model('Moderators', moderators);
+const Moderators = mongoose.model('moderators', moderators);
 
 export default Moderators;

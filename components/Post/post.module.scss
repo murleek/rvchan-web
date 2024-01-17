@@ -1,7 +1,30 @@
+.marginNull {
+    margin: 0!important;
+}
 .postWrap {
-    margin: 0 0 6px;
+    margin: 0 0 4px;
+    & .toThreadButton {
+        width: 72px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        padding: 2px 0 4px;
+        font-size: 13px;
+        transition: .1s ease-in-out;
+        box-shadow: 0 1px 0 1px #eeeeee;
+        &:hover {
+            font-size: 14px;
+            background: #f0f;
+            box-shadow: -16px 0 1.5rem 0.0625rem #f0f, -0px 0 .5rem 0.3125rem #f0f;
+            color: #fff;
+            font-weight: 800;
+        }
+    }
+    &:not(.postOp) {
+        margin: 0 2px 4px 16px;
+    }
     & .post:not(.postOp) {
-        margin-left: 16px;
         position: relative;
         &::before {
             display: block;

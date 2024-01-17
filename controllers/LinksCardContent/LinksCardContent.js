@@ -20,7 +20,6 @@ export default function LinksCardContent() {
                 <span><Link href="/feedback/">жалобы и пожелания</Link></span>
                 <span><a href="//t.me/ravechan">канал в телеграме</a></span>
                 <span><Link href="mailto:r4v3c4t@pm.me">почта</Link></span>
-                <span><Link href="/sys/">рвач-система</Link></span>
             </div>
         </div>
     )

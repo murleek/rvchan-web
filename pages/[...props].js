@@ -1,58 +1,31 @@
 import Cookies from 'universal-cookie'
 import Head from 'next/head'
 import { v4 as uuidv4 } from 'uuid'
-import Card from '../components/card/card'
-import TabbedCard from '../components/tabbedCard/tabbedCard'
-import Header from '../components/header/header'
-import Footer from '../components/footer/footer'
-import LinksCardContent from '../components/card/linksCardContent/linksCardContent'
-import StatsCardContent from '../components/card/statsCardContent/statsCardContent'
-import Splitted from '../components/card/splitted/splitted'
-import BoardsCardContent from '../components/card/boardsCardContent/boardsCardContent'
-import TrackerCardContent from '../components/card/trackerCardContent/trackerCardContent'
+import Header from '../components/Header/Header'
+import Footer from '../components/Footer/Footer'
 import dynamic from "next/dynamic";
 import Error from './_error'
-const FastLinks = dynamic(() => import('../components/fastLinks/fastLinks'), {ssr: false});
-import { useRouter } from 'next/router'
-import Post from '../components/post/post'
-import PostForm from '../components/postform/postform'
+const FastLinks = dynamic(() => import('../components/FastLinks/FastLinks'), {ssr: false});
+import Post from '../components/Post/Post'
+import PostForm from '../components/PostForm/PostForm'
+import connectDB from "../lib/connectDB";
+import Boards, {BOARD_NAME_LENGTH} from "../models/boards";
 
 const RVCHAN_DESCRIPTION = "это анонимный (пока не) имиджборд, написанный одним школьником. Форум имеет тематические борды (aka разделы), в которых общение ограниченно темой борды или тредом. Борда “test0f1a” не имеет определенной темы общения, но подчиняется все тем же правилам форума.";
 
-const items = [
-    {
-        id: 'tracker',
-        name: "трекер",
-        content: ( <TrackerCardContent /> )
-    },
-    {
-        id: 'boards',
-        name: "доски",
-        content: ( <BoardsCardContent /> )
-    }
-];
-const boards = [
-    {
-        name: "b",
-        title: "/b/ред"
-    },
-    {
-        name: "a",
-        title: "/a/ниме"
-    }
-]
-
-export default function Thread({ session, privToken }) {
-    const router = useRouter();
-    const { props } = router.query;
-    var board = boards.find(x => x.name == props[0]);
-    console.log(board);
-    if (props.length > 2) {
-        return (<Error statusCode={404} />)
-    } else if (!board) {
-        return (<Error statusCode={404} description={<>доска <b>{props[0]}</b> не найдена :(</>} />)
+export default function Thread({ board, boardName, threadNum, err }) {
+    if (err) {
+        if (err.includes("not-found")) {
+            return (<Error statusCode={404}/>)
+        } else if (err.includes("not-exists") || err.includes("disabled")) {
+            return (<Error title={"доска не найдена или отключена"} statusCode={404} description={<>доска <b>{boardName}</b> отключена или не найдена :(</>}/>)
+        } else if (err.includes("db-connection-error")) {
+            return (<Error statusCode={500} description={<>не удалось подключиться к базе данных</>} /> )
+        }
     }
     const cookies = new Cookies();
+    let session = cookies.get("rv-session-pubtoken");
+    let privToken = cookies.get("rv-session-privtoken");
     if (!session) {
         session = uuidv4();
         cookies.set("rv-session-pubtoken", session, {maxAge: 365*24*60*60});
@@ -87,7 +60,7 @@ export default function Thread({ session, privToken }) {
 
         <header>
             <FastLinks />
-            <Header title={board.title} description={"постинг пока отсутствует..."}/>
+            <Header title={board.name} description={"постинг пока отсутствует..."}/>
         </header>
 
         <main>
@@ -122,19 +95,41 @@ export default function Thread({ session, privToken }) {
         </main>
 
         <footer>
-            <Footer session={session} privToken={privToken}/>
+            <Footer desc={process.env.NODE_ENV !== 'production' ? <span style={{fontWeight: "900", color: "#f88"}}>{process.env.NODE_ENV}</span> : null} session={session} privToken={privToken}/>
         </footer>
     </div>
     )
 }
+export async function getServerSideProps({req, res, params}) {
+	let boardName = params.props[0] ?? null;
+	let threadNum = params.props[1] ?? null;
+	boardName = boardName != null
+		&& new RegExp(`^[a-zA-Z0-9]{1,${BOARD_NAME_LENGTH}}$`).test(boardName)
+			? boardName
+			: null;
+	threadNum = threadNum === null
+		? 0
+		: new RegExp(`^([0-9]+)$`).test(threadNum)
+			? Number(threadNum)
+			: null;
+	if (params.props.length > 2 || boardName === null || threadNum === null) {
+		return {props: {err: ["not-found"]}}
+	}
+    try {
+        return await connectDB(async () => {
+            const board = await Boards.findOne({title: boardName}).lean()
 
-Thread.getInitialProps = (ctx) => {
-    var cookies = new Cookies();
-    if (ctx.req != null) {
-        cookies = new Cookies(ctx.req.headers.cookie);
+            if (!board) {
+                return {props: {err: ["not-exists"]}}
+            } else if (board.disabled) {
+                return {props: {err: ["disabled"]}}
+            }
+            board._id = board._id.toString()
+	        board.creationDate= board.creationDate.toString();
+	        board.lastUpdateDate= board.lastUpdateDate.toString();
+            return {props: {board, boardName, threadNum}}
+        })(req, res);
+    } catch (e) {
+        return {props: {err: ["db-connection-error"]}}
     }
-    let session = cookies.get("rv-session-pubtoken");
-    let privToken = cookies.get("rv-session-privtoken");
-    console.log(session, privToken);
-    return { session, privToken };
-};
+}

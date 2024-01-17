@@ -1,6 +1,6 @@
 import style from "./boardsCardContent.module.scss"
 import { useState, useRef, useEffect } from "react";
-import {nullish} from "../../../utils/polyfill";
+import {nullish} from "../../utils/polyfill";
 import Link from "next/link"
 
 export default function BoardsCardContent({boards}) {

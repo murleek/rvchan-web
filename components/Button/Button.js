@@ -1,9 +1,12 @@
-import style from "./hLine.module.scss"
+import style from "./button.module.scss"
+import Link from "next/link"
 
-export default function HLine(props) {
+export default function Button(props) {
     return (
-        <div className={style.hLine}>
-            {props.children}
-        </div>
+        <Link href={props.href}>
+            <div className={style.button + (!props.className ? '' : ' ' + props.className)} style={props.style}>
+                {props.children}
+            </div>
+        </Link>
     )
 }

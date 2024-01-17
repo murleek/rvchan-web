@@ -5,6 +5,7 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  background: linear-gradient(180deg, #f5f5f7, #0000);
 
   & .title {
     font-weight: bold;
@@ -12,8 +13,11 @@
     &.withLogo {
       background: url(/rvchan.svg) left/auto 60% no-repeat;
       padding-left: 1.25em;
-      &.red {
+      &.prod {
         background-image: url(/rvchan-red.svg);
+      }
+      &.ukraine {
+        background-image: url(/rvchan-ukraine.svg)!important;
       }
     }
   }

@@ -1,33 +1,32 @@
 import mongoose from 'mongoose';
 
-const moderators = new mongoose.Schema({
+const threads = new mongoose.Schema({
   name: {
     type: String,
-    required: true
   },
-  role: {
+  title: {
     type: String,
     required: true
   },
   token: {
     type: String,
+//    required: true
+  },
+  id: {
+    type: Number,
     required: true
+//    required: true
   },
-  createdBy: String,
-  creationDate: {
-	  type: Date,
-	  default: Date.now
-  },
-  rules: {
-    "*": Boolean,
-    canAddBoards: Boolean,
-    canEditBoards: Boolean,
-    canDeleteBoards: Boolean,
+  options: {
+    canPostImages: Boolean,
+    isPinned: Boolean,
   }
 });
 
 mongoose.models = {};
 
-const Moderators = mongoose.model('moderators', moderators);
 
-export default Moderators;
+const Threads = (board) => {
+  return mongoose.model(`${board}-threads`, threads);
+}
+export default Threads;

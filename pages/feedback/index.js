@@ -1,16 +1,16 @@
 import Cookies from 'universal-cookie'
 import { v4 as uuidv4 } from 'uuid'
 import Head from 'next/head'
-import {useRouter} from 'next/router'
-import Error from '../_error'
-import Header from '../../components/header/header'
-import Footer from '../../components/footer/footer'
-import Card from '../../components/card/card'
+import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
+import Card from '../../components/Card/Card'
 import dynamic from "next/dynamic";
-const FastLinks = dynamic(() => import('../../components/fastLinks/fastLinks'), {ssr: false});
+const FastLinks = dynamic(() => import('../../components/FastLinks/FastLinks'), {ssr: false});
 
-export default function Thread({ session, privToken, referrer }) {
+export default function Feedback() {
     const cookies = new Cookies();
+    let session = cookies.get("rv-session-pubtoken");
+    let privToken = cookies.get("rv-session-privtoken");
     if (!session) {
         session = uuidv4();
         cookies.set("rv-session-pubtoken", session, {maxAge: 365*24*60*60});
@@ -61,18 +61,3 @@ export default function Thread({ session, privToken, referrer }) {
     </div>
     )
 }
-
-Thread.getInitialProps = (ctx) => {
-    var cookies = new Cookies();
-    var referrer = "";
-    if (ctx.req != null) {
-        referrer = ctx.req.headers.referer;
-        cookies = new Cookies(ctx.req.headers.cookie);
-    } else {
-        referrer = document.referrer;
-    }
-    let session = cookies.get("rv-session-pubtoken");
-    let privToken = cookies.get("rv-session-privtoken");
-    console.log(session, privToken);
-    return { session, privToken, referrer };
-};

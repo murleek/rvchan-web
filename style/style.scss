@@ -1,5 +1,6 @@
 @import url('/fonts/SFUIDisplay/font-face.css');
 @import 'color.scss';
+@import 'respond.scss';
 
 * {
   box-sizing: border-box;
@@ -12,17 +13,73 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
   background: transparent;
 }
+ol.-no-decor, ul.-no-decor {
+  list-style: none
+;
+}
+ol:not(.-no-decor), ul:not(.-no-decor) {
+  & > li {
+    margin: 0 0 4px;
+    padding: 0 0 0 3em;
+    text-indent: -1.5em;
+  }
+}
+ul:not(.-no-decor) {
+  & > li {
+    list-style-type: none;
+    text-indent: -1em;
 
-ol, ul, li {
-  list-style: none;
+    &:before {
+      content: ' ';
+      background: #000;
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      left: -8px;
+      top: -2px;
+      position: relative;
+      border-radius: 50%;
+    }
+  }
+}
+ol {
+  counter-reset: item;
+
+  & > li {
+    list-style-type: none;
+    counter-increment: item;
+
+    &:before {
+      display: inline-block;
+      width: 1em;
+      padding-right: 0.5em;
+      font-weight: bold;
+      text-align: right;
+      content: counter(item) ".";
+    }
+  }
+}
+
+div.error {
+  text-align: center;
+  & > .name {
+    font-size: 1.2em;
+    display: block;
+    font-weight: bold;
+  }
+  & > .description {
+    color: #666666;
+  }
 }
 
 body {
+  overflow: paged-y;
   margin: 0;
   background: $background;
   color: $textColor;
   font-size: 15px;
   font-family: -apple-system-font,BlinkMacSystemFont,"SF UI Display",Arial,sans-serif;
+  padding: 0 12px 4px;
 }
 a {
   color: inherit;
@@ -39,6 +96,18 @@ a {
     }
   }
 }
+header {
+  z-index: 11;
+  position: relative;
+}
+.grecaptcha-badge {
+  z-index: 10000;
+  margin: 0 auto;
+  border-radius: .625em;
+  overflow: hidden;
+  box-shadow: 0 0 2rem 0.25rem #0002, 0 0 .3125rem 0.1rem #0000000c !important;
+  filter: hue-rotate(90deg);
+}
 
 .-no-decor {
   text-decoration: none!important;
@@ -47,7 +116,11 @@ a {
 .homePage {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 12px 4px;
+}
+.withPostForm {
+  @include respond(mobile) {
+    padding-bottom: 42px;
+  }
 }
 
 

@@ -1,31 +1,73 @@
-.button {
+@import "/style/respond";
+
+.windowWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0003;
   display: flex;
-  align-items: center;
   justify-content: center;
-  cursor: pointer;
+  align-items: center;
+  padding: 12px;
+  z-index: -9999;
+  backdrop-filter: blur(16px);
 
-  width: calc(100% - 16px);
-  max-width: 480px;
-  height: 28px;
-  border-radius: .625em;
-  margin-bottom: 4px;
-  margin-left: 16px;
-
-  transition: 0.2s ease-in-out;
-
-  background: #fff;
-  color: #000;
-  font-weight: 700;
-  text-decoration-color: #db00db;
-  text-decoration: underline;
-
-  &:hover {
-    background-color: #ddd!important;
-    color: #000!important;
-    text-decoration-color: #0000!important;
-  }
-  &.disabled {
+  & > .window {
+    border-radius: 10px;
     background: #fff;
-    color: #000;
+    overflow: hidden;
+    box-shadow: 0 0 2rem .025rem #0002;
+    max-width: 960px;
+    width: 100%;
+    display: flex;
+    flex-flow: nowrap column;
+    max-height: 100%;
+
+    @include respond(mobile-large desktop) {
+      width: 50%;
+    }
+
+    & > .windowTooltip {
+      padding: 4px;
+      background: #eee;
+      height: 48px;
+
+      & > .title {
+        font-weight: 700;
+        text-align: center;
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        vertical-align: center;
+        color: #333;
+      }
+      & > .close {
+        position: absolute;
+        right: 6px;
+        top: 6px;
+        font-weight: 800;
+        height: 36px;
+        width: 36px;
+        line-height: 36px;
+        vertical-align: center;
+        text-align: center;
+        cursor: pointer;
+        transition: .2s ease-in-out;
+        border-radius: 4px;
+        font-size: 36px;
+        color: #888;
+        
+        &:hover {
+          background: #0001;
+        }
+      }
+    }
+    & > .windowContent {
+      overflow: auto;
+      height: 100%;
+      display: block;
+    }
   }
 }

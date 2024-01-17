@@ -11,40 +11,44 @@ export default function TrackerCardContent(props) {
         }
         return p;
     });
+    let date = (p) => new Date(p.date.getTime() - new Date().getTimezoneOffset()*60000)
+            .toISOString()
+            .replace(/T/, ' ')
+            .replace(/\..+/, '')
+            .replace(/-/g, '.')
 
     return (
         <div className={style.trackerWrap}>
             <ul className={"-no-decor"}>
                 {
                     posts.map((p) => (
-                        <li key={p.id}>
-                            <code className={classNames({
-                                [style.typeThread]: !p.thread,
-                                [style.typePost]: !!p.thread
-                            })}>
-                                {'['}
-                                {!p.thread ? "Т" : "П"}
-                                {']'}
-                            </code>
-                            {' '}
-                            <Link href={`/${p.board}${p.thread != null && p.thread != 0 ? `/${p.thread}${p.id != null ? `#${p.id}` : ''}` : `/${p.id}`}`} className={style.board}>
-                                {`»${p.board}${p.thread != null && p.thread != 0 ? `»${p.thread}${p.id != null ? `›${p.id}` : ''}` : `»${p.id}`}`}
-                            </Link>
-                            {' - '}
-                            <span>{p.title || ((p.content.length > cut) ? p.content.substr(0, cut-1).trim() + '…' : p.content)}</span>
-                            {' '}
-                            <span className={style.date}>
-                                {'['}
-                                {
-                                    new Date(p.date.getTime() - new Date().getTimezoneOffset()*60000)
-                                        .toISOString()
-                                        .replace(/T/, ' ')
-                                        .replace(/\..+/, '')
-                                        .replace(/-/g, '.')
-                                }
-                                {']'}
-                            </span>
-                        </li>
+                        <Link key={p.id} href={`/${p.board}${p.thread != null && p.thread ? `/${p.thread}${p.id != null ? `#${p.id}` : ''}` : `/${p.id}`}`} className={style.board}>
+                            <li>
+                                <code className={classNames({
+                                    [style.typeThread]: !p.thread,
+                                    [style.typePost]: !!p.thread
+                                })}>
+                                    {'['}
+                                    {!p.thread ? "Т" : "П"}
+                                    {']'}
+                                </code>
+                                {' '}
+                                {`»${p.board}${p.thread != null && p.thread ? `»${p.thread}${p.id != null ? `›${p.id}` : ''}` : `»${p.id}`}`}
+                                {' - '}
+                                <span>{p.title || ((p.content.length > cut) ? p.content.substr(0, cut-1).trim() + '…' : p.content)}</span>
+                                {' '}
+                                <span className={style.dateWrap}>
+                                    <span className={style.date}>
+                                        {date(p)}
+                                    </span>
+                                    <span className={style.dateInner}>
+                                        <span className={style.date}>
+                                            {date(p)}
+                                        </span>
+                                    </span>
+                                </span>
+                            </li>
+                        </Link>
                     ))
                 }
             </ul>

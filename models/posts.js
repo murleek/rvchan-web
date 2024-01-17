@@ -1,35 +1,49 @@
 import mongoose from 'mongoose';
+import autoIncrement from 'mongoose-auto-increment'
 
-const threads = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
+autoIncrement.initialize(mongoose);
+
+const posts = new mongoose.Schema({
     name: {
-        type: String,
-        required: true
+        type: String
     },
-    board: {
-        type: String,
+    num: {
+        type: Number,
         required: true
     },
     mail: {
-        type: String,
-        required: true
+        type: String
     },
-    date: {
+    admissionDate: {
+        type: Date,
+        default: Date.now
+    },
+    issueDate: {
         type: Date,
         default: Date.now
     },
     token: {
-        type: Date,
-        default: Date.now
+        type: String,
+        // required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    thread: {
+        type: Number
     },
     files: [{type: String}]
 });
 
 mongoose.models = {};
 
-const Threads = (board) => mongoose.model(`${board}-threads`, threads);
+const Posts = (board) => {
+    posts.plugin(autoIncrement.plugin, {
+        model: `${board}-posts`,
+        field: 'id'
+    })
+    return mongoose.model(`${board}-posts`, posts);
+}
 
-export default Threads;
+export default Posts;

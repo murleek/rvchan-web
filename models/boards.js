@@ -4,28 +4,30 @@ export const BOARD_NAME_LENGTH = 12;
 
 const boards = new mongoose.Schema({
   title: {
-    type: String,
-    required: true
+	type: String,
+	required: true
   },
   name: {
-    type: String,
-    required: true
+	type: String,
+	required: true
   },
   desc: {
-    type: String,
-    required: true
+	type: String,
+	required: true
   },
   creationDate: {
-    type: Date,
+	type: Date,
+	default: Date.now
   },
   lastUpdateDate: {
-    type: Date,
+	  type: Date,
+	  default: Date.now
   },
   tags: [{type: String}]
 });
 
 mongoose.models = {};
 
-const Boards = mongoose.model('Boards', boards);
+const Boards = mongoose.model('boards', boards);
 
 export default Boards;

@@ -1,3 +1,3 @@
 # rvchan-web
 
-my first normal react+node.js project
+няшки ето наш рвачек)0)

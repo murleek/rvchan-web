@@ -5,23 +5,16 @@ import connectDB from '../../../../lib/connectDB'
 
 export default connectDB(async (req, res) => {
     const {
-        query: { id },
+        query: { boardId },
         method,
         body,
     } = req;
     switch (method) {
         case "GET":
             try {
-                let board = await Boards.findOne({title: id});
-                if (!board) {
-                    try {
-                        board = await Boards.findOne({_id: id});
-                    } catch (e) {
+                let board = await Boards.findOne({title: boardId});
 
-                    }
-                }
-
-                if (!board) res.status(404).json({success: false, error: "not found"});
+                if (!board) res.status(404).json({success: false, error: "board not found"});
                 res.json({
                     success: true,
                     board: board
@@ -40,14 +33,7 @@ export default connectDB(async (req, res) => {
                 if (!moderator.rules['*'] && !moderator.rules.canEditBoards) {
                     res.status(403).json({success: false, error: "permission denied"})
                 }
-                let oldBoard = await Boards.findOne({title: id}).lean();
-                if (!oldBoard) {
-                    try {
-                        oldBoard = await Boards.findOne({_id: id}).lean();
-                    } catch (e) {
-
-                    }
-                }
+                let oldBoard = await Boards.findOne({title: boardId}).lean();
                 if (!oldBoard) res.status(404).json({success: false, error: "not found"});
                 const newBoard = await Boards.findByIdAndUpdate(oldBoard, {...oldBoard, ...body.board, lastUpdate: Date.now}, {
                     new: true,
@@ -79,14 +65,7 @@ export default connectDB(async (req, res) => {
                 if (!moderator.rules['*'] && !moderator.rules.canDeleteBoards) {
                     return res.status(403).json({success: false, error: "permission denied"})
                 }
-                let oldBoard = await Boards.findOne({title: id}).lean();
-                if (!oldBoard) {
-                    try {
-                        oldBoard = await Boards.findOne({_id: id}).lean();
-                    } catch (e) {
-
-                    }
-                }
+                let oldBoard = await Boards.findOne({title: boardId}).lean();
                 if (!oldBoard) return res.status(404).json({success: false, error: "not found"});
                 await Boards.findByIdAndUpdate(oldBoard, {...oldBoard, disabled: true, lastUpdate: Date.now}, {
                     new: true,

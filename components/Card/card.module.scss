@@ -5,13 +5,15 @@
   width: 100%;
   overflow: hidden;
   border-radius: .625rem;
-  margin: 0 0 20px;
+  margin: 0 auto 20px;
+  max-width: 1080px;
 
   & > .card {
     background: $cardColor;
     font-size: .9rem;
     padding: 12px;
     border: 0;
+    z-index: 1;
 
     & > .cardTitle {
       width: 100%;
@@ -23,6 +25,6 @@
     }
   }
   &:last-child {
-    margin: 0;
+    margin-bottom: 0;
   }
 }

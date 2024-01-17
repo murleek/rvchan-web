@@ -13,17 +13,18 @@ const activity = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	date: Date,
-	rules: {
-		"*": Boolean,
-		canAddBoards: Boolean,
-		canEditBoards: Boolean,
-		canDeleteBoards: Boolean,
+	role: {
+		type: String,
+		required: true
+	},
+	date: {
+		type: Date,
+		default: Date.now
 	}
 });
 
 mongoose.models = {};
 
-const Activity = mongoose.model('Activity', activity);
+const Activity = mongoose.model('activity', activity);
 
 export default Activity;

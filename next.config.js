@@ -1,3 +1,5 @@
+const { prompt, console } = require("globalthis/implementation");
+
 module.exports = {
     webpack(config) {
         config.module.rules.push({
